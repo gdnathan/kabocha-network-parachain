@@ -1,0 +1,3 @@
+[submodule "pallets/sub_treasury"]
+	path = pallets/sub_treasury
+	url = git@github.com:rusty-crewmates/pallet_sub_treasury.git

@@ -3439,6 +3439,7 @@ dependencies = [
  "pallet-preimage",
  "pallet-scheduler",
  "pallet-session",
+ "pallet-sub-treasury",
  "pallet-sudo",
  "pallet-timestamp",
  "pallet-transaction-payment",
@@ -5614,6 +5615,24 @@ source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.9.16#19
 dependencies = [
  "log",
  "sp-arithmetic",
+]
+
+[[package]]
+name = "pallet-sub-treasury"
+version = "4.0.0-dev"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "impl-trait-for-tuples",
+ "pallet-balances",
+ "parity-scale-codec",
+ "scale-info",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -10580,7 +10599,7 @@ dependencies = [
  "chrono",
  "lazy_static",
  "matchers",
- "parking_lot 0.10.2",
+ "parking_lot 0.11.2",
  "regex",
  "serde",
  "serde_json",
