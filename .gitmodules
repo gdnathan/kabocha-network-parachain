@@ -1,0 +1,3 @@
+[submodule "pallets/dorg"]
+	path = pallets/dorg
+	url = git@github.com:rusty-crewmates/pallet_dorg.git
