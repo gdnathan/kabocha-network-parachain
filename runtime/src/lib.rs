@@ -66,8 +66,8 @@ use xcm_builder::{
 };
 use xcm_executor::{Config, XcmExecutor};
 
-/// Import the template pallet.
 pub use pallet_mint_with_fee;
+pub use pallet_dorg;
 
 /// Alias to 512-bit hash when used in the context of a transaction signature on the chain.
 pub type Signature = MultiSignature;
@@ -616,6 +616,11 @@ impl pallet_mint_with_fee::Config for Runtime {
     type WeightInfo = pallet_mint_with_fee::weights::SubstrateWeight<Runtime>;
 }
 
+impl pallet_dorg::Config for Runtime {
+	type Event = Event;
+    type Currency = Balances;
+}
+
 parameter_types! {
 	// One storage item; key size is 32; value is size 4+4+16+32 bytes = 56 bytes.
 	pub const DepositBase: Balance = deposit(1, 88);
@@ -919,8 +924,9 @@ construct_runtime!(
 		DmpQueue: cumulus_pallet_dmp_queue::{Pallet, Call, Storage, Event<T>} = 36,
 
 		MintWithfee: pallet_mint_with_fee::{Pallet, Call, Event<T>, Storage, Config<T>}  = 43,
+	    Dorg: pallet_dorg::{Pallet, Call, Event<T>, Storage}  = 44,
 
-		Multisig: pallet_multisig::{Pallet, Call, Storage, Event<T>} = 44,
+		Multisig: pallet_multisig::{Pallet, Call, Storage, Event<T>} = 45,
 
 
 	}
