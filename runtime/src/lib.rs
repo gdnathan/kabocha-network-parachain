@@ -22,6 +22,8 @@ use sp_runtime::{
     Percent,
 };
 
+pub use pallet_supersig;
+
 use sp_std::prelude::*;
 #[cfg(feature = "std")]
 use sp_version::NativeVersion;
@@ -620,6 +622,7 @@ impl pallet_mint_with_fee::Config for Runtime {
 parameter_types! {
 	pub const SupersigPalletId: PalletId = PalletId(*b"id/susig");
 	pub const SupersigPreimageByteDeposit: Balance = 1 * CENTS;
+    pub const SupersigMaxUsers: u32 = 20;
 }
 
 impl pallet_supersig::Config for Runtime {
@@ -627,8 +630,9 @@ impl pallet_supersig::Config for Runtime {
     type Currency = Balances;
 	type PalletId = SupersigPalletId;
     type Call = Call;
-	type PreimageByteDeposit = SupersigPreimageByteDeposit;
+	type PricePerBytes = SupersigPreimageByteDeposit;
     type WeightInfo = pallet_supersig::weights::SubstrateWeight<Runtime>;
+    type MaxUsersPerTransaction = SupersigMaxUsers;
 }
 
 parameter_types! {
@@ -951,6 +955,7 @@ define_benchmarks!(
     [pallet_collator_selection, CollatorSelection]
     [pallet_vesting, Vesting]
     [pallet_multisig, Multisig]
+    [pallet_supersig, Supersig]
 	//	[pallet_sudo, Sudo]
 
 	);
